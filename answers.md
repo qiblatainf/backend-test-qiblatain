@@ -1,9 +1,7 @@
+### TASK 3 - SOLUTION EXPLANATION ###
 
-### TASK 2 - SOLUTION EXPLAINATION ###
+## Solution file: migration.sql ##
 
-
-
-### TASK 3 - SOLUTION ###
 1 case : n activities
 1 process : n cases
 
