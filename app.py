@@ -133,7 +133,7 @@ def filterCopyPasteEvents(data):
     copiedEvents["actioncategory"] = "copy"
     copiedEvents = copiedEvents[['userid', 'applicationname', 'timestamp', 'eventtype', 'acceleratorkey', 'actioncategory']]
     
-    #identify events where the data was copied/clicked "TO"
+    #identify events where the data was pasted "TO"
     pastedEvents = data[data['eventtype'] == 'CTRL + V']
     pastedEvents["actioncategory"] = "paste"
     pastedEvents = pastedEvents[['userid', 'applicationname', 'timestamp', 'eventtype', 'acceleratorkey', 'actioncategory']]
@@ -141,12 +141,12 @@ def filterCopyPasteEvents(data):
     return copiedEvents, pastedEvents
 
 def analysis(copiedEvents, pastedEvents):
-    '''This function performs analysis by merging the copy events and paste event. 
-    It's followed by sorting the merged data in the order of userid and then timestampe.
-    We then creating a 'next action category' column which refers to the category of the next record 
+    '''This function analyses by merging the copy events and paste events. 
+    It's followed by sorting the merged data in the order of userid and then timestamp.
+    We then create a 'next action category' column which refers to the category of the next record 
     (to check if a paste action was followed by a copy action AND to check the next application the action
     was performed on). 
-    And finally the aggregation is performed.
+    And finally, the aggregation is performed.
 
     CASE 1 : copied from app1 to app1 - does not count
     CASE 2 : copied from app1 to app2 n times - counts as 1
